@@ -101,11 +101,11 @@ public class Day2
         bool LosesTo(IRps rival);
     }
 
-    private class Scissors: IRps
+    private abstract class RpsBase : IRps
     {
-        public int Points => 3;
+        public abstract int Points { get; }
 
-        public int DecideMatchPoints(IRps rival)
+        public virtual int DecideMatchPoints(IRps rival)
         {
             if (WinsOver(rival)) return Points + 6;
             if (LosesTo(rival) && !WinsOver(rival)) return Points + 0;
@@ -113,7 +113,16 @@ public class Day2
             throw new Exception("NO CHEATING");
         }
 
-        public bool WinsOver(IRps rival)
+        public abstract bool WinsOver(IRps rival);
+
+        public abstract bool LosesTo(IRps rival);
+    }
+
+    private class Scissors: RpsBase
+    {
+        public override int Points => 3;
+        
+        public override bool WinsOver(IRps rival)
         {
             switch (rival)
             {
@@ -128,7 +137,7 @@ public class Day2
             }
         }
 
-        public bool LosesTo(IRps rival)
+        public override bool LosesTo(IRps rival)
         {
             switch (rival)
             {
@@ -144,19 +153,11 @@ public class Day2
         }
     }
 
-    private class Paper : IRps
+    private class Paper : RpsBase
     {
-        public int Points => 2;
+        public override int Points => 2;
 
-        public int DecideMatchPoints(IRps rival)
-        {
-            if (WinsOver(rival)) return Points + 6;
-            if (LosesTo(rival) && !WinsOver(rival)) return Points + 0;
-            if (!WinsOver(rival) && !LosesTo(rival)) return Points + 3;
-            throw new Exception("NO CHEATING");
-        }
-
-        public bool WinsOver(IRps rival)
+        public override bool WinsOver(IRps rival)
         {
             switch (rival)
             {
@@ -171,7 +172,7 @@ public class Day2
             }
         }
 
-        public bool LosesTo(IRps rival)
+        public override bool LosesTo(IRps rival)
         {
             switch (rival)
             {
@@ -187,19 +188,11 @@ public class Day2
         }
     }
 
-    private class Rock: IRps
+    private class Rock: RpsBase
     {
-        public int Points => 1;
-
-        public int DecideMatchPoints(IRps rival)
-        {
-            if (WinsOver(rival)) return Points + 6;
-            if (LosesTo(rival) && !WinsOver(rival)) return Points + 0;
-            if (!WinsOver(rival) && !LosesTo(rival)) return Points + 3;
-            throw new Exception("NO CHEATING");
-        }
-
-        public bool WinsOver(IRps rival)
+        public override int Points => 1;
+        
+        public override bool WinsOver(IRps rival)
         {
             switch (rival)
             {
@@ -214,7 +207,7 @@ public class Day2
             }
         }
 
-        public bool LosesTo(IRps rival)
+        public override bool LosesTo(IRps rival)
         {
             switch (rival)
             {
