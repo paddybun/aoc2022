@@ -2,8 +2,6 @@
 
 using AdventOfCode2022;
 
-Console.WriteLine("Hello, World!");
-
 var day1 = new Day1();
 day1.DoWork();
 
