@@ -8,4 +8,7 @@ day1.DoWork();
 var day2 = new Day2();
 day2.DoWork();
 
+var day3 = new Day3();
+day3.DoWork();
+
 Console.Read();
