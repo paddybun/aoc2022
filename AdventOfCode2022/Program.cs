@@ -14,4 +14,7 @@ day3.DoWork();
 var day4 = new Day4();
 day4.DoWork();
 
+var day5 = new Day5();
+day5.DoWork();
+
 Console.Read();
