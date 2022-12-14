@@ -13,9 +13,13 @@
     <None Remove="d3.txt" />
     <None Remove="d4.txt" />
     <None Remove="d5.txt" />
+    <None Remove="d6.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="d6.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="d5.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
